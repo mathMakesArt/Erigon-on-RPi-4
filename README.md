@@ -87,6 +87,8 @@ Intended local paths (within Ubuntu Server) are given in parenthesis after each 
         * Arduino script for upload to Nano device
     * **safe_shutdown.py** (`/home/arduino/safe_shutdown.py`)
         * Python script which monitors GPIO for (lack of) signal from Arduino Nano
+        * Run manually with the following command (NOTE: normally not needed, as this is managed by `rc.local`)
+            * `sudo python /home/arduino/safe_shutdown.py`
     * **rc.local** (`/etc/rc.local`)
         * Modified for automatic launch of `safe_shutdown.py` upon startup
 
