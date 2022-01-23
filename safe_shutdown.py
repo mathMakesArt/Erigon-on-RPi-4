@@ -4,8 +4,8 @@ import subprocess
 
 # CONFIGURATION VARIABLES
 GPIO_NUM = 24
-WAIT_SECONDS = 5.0
-SHUTDOWN_SECONDS = 300.0
+WAIT_SECONDS = 10.0
+SHUTDOWN_SECONDS = 5400.0 # 90 minutes
 FLAG_INITIAL_SYNC = True
 
 def main():
@@ -49,7 +49,7 @@ def main():
 
     # 2. Clearing the Erigon data directory (ONLY in initial sync mode)
     if FLAG_INITIAL_SYNC:
-        print("\n\n\nDELETING ERIGON DATA DIRECTORY WITH: sudo rm -rf /home/ethereum/.erigon\n\n\n")
+        print("\n\n\nENDING SUPERVISOR WITH: sudo rm -rf /home/ethereum/.erigon\n\n\n")
         clearData = subprocess.Popen(["sudo", "rm", "-rf", "/home/ethereum/.erigon"], stdout=subprocess.PIPE)
         print(clearData.communicate())
 
