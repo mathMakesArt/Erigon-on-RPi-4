@@ -25,8 +25,8 @@
 
 ### **Raspberry Pi Selection**
 * I highly recommend using the 8GB version of the RPi Model 4.
-* The EthereumOnARM team have built and tested their custom Ubuntu Server image specifically for the version with 8GB RAM.
-* Erigon already recommends a minimum of 16 GB RAM, more than that of the highest-tier RPi.
+* The EthereumOnARM team have built and tested their custom Ubuntu Server image specifically for the version with 8 GB RAM.
+* Erigon already recommends a minimum of 16 GB RAM, more than that of the highest-tier RPi. So restricting RAM any further below 8 GB is not advised.
 ### **Network Setup**
 * You must have an internet connection with the ability to port-forward
     * **Port 30303** (on the IP address assigned to the Raspberry Pi) must be open to external traffic, **both TCP and UDP**, before the `erigon` process launches (on reboot)
@@ -226,6 +226,24 @@ There are a variety of ways to monitor the Erigon sync process. I personally ten
 4. `slurm -i eth0`
     * Given the name of a network interface, continuously displays data of download and upload rates. Includes a (terminal-based) graph of the instantaneous rates over time.
     * Requires `sudo apt install slurm` first
+
+<br />
+<br />
+
+## **STEPS TO BACK UP (AFTER SYNC COMPLETION):**
+
+When the initial sync has completed, I recommend backing up the Erigon chain data (and other related files).
+
+If the live node state becomes corrupted in the future (or if you want to run an additional node) it is possible to restore from this backup, instead of waiting for the initial sync process to complete again.
+
+1. `sudo fdisk -l`
+    1. To list the disks available
+2. `sudo mkdir /mnt/backup`
+    1. Create a new directory (within `/mnt/`) at which the backup disk will be mounted
+3. `sudo mount /dev/sdb2 /mnt/backup`
+    1. To mount the chosen disk at `/mnt/backup` (replace `/dev/sdb2` with your chosen disk)
+4. `sudo cp -rv /home/ethereum /mnt/backup`
+    1. To copy (and print a line for each copied file) the entire contents of `/home/ethereum` into the newly mounted disk
 
 <br />
 <br />
