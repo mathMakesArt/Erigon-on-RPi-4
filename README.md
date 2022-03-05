@@ -92,8 +92,6 @@ Intended local paths (within Ubuntu Server) are given in parenthesis after each 
     * **rc.local** (`/etc/rc.local`)
         * Modified for automatic launch of `safe_shutdown.py` upon startup
 
-2. **Use a program like [**Balena Etcher**](https://www.balena.io/etcher/) to write this image onto a MicroSD card with at least 16GB capacity**
-
 <br />
 <br />
 
